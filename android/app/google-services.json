@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991305640017",
+    "project_id": "yupoo-linki",
+    "storage_bucket": "yupoo-linki.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991305640017:android:9d664d93a7ee8e51e6f070",
+        "android_client_info": {
+          "package_name": "com.example.moja_wyszukiwarka_mobilna"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0RsfJIId03kcoes4z7utC9Hydp7uovL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
