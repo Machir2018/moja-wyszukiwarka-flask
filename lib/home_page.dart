@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
+import 'link_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,9 +19,21 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       searchQuery = searchController.text.trim();
     });
+  }
 
-    // Tu możesz dodać logikę filtrowania wpisów
-    print('Szukam: $searchQuery');
+  Stream<List<LinkItem>> getLinksStream() {
+    return FirebaseFirestore.instance
+        .collection('links')
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) {
+              final data = doc.data();
+              return LinkItem.fromFirestore(data);
+            }).where((link) {
+              final q = searchQuery.toLowerCase();
+              return link.title.toLowerCase().contains(q) ||
+                     link.description.toLowerCase().contains(q) ||
+                     link.url.toLowerCase().contains(q);
+            }).toList());
   }
 
   @override
@@ -68,9 +83,37 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             const SizedBox(height: 32),
-                            if (searchQuery.isNotEmpty)
+                            if (searchQuery.isNotEmpty) ...[
                               Text('Wyniki dla: "$searchQuery"',
                                   style: const TextStyle(fontSize: 18)),
+                              const SizedBox(height: 16),
+                              StreamBuilder<List<LinkItem>>(
+                                stream: getLinksStream(),
+                                builder: (context, snapshot) {
+                                  if (!snapshot.hasData) return const CircularProgressIndicator();
+                                  final links = snapshot.data!;
+                                  if (links.isEmpty) {
+                                    return const Text('Brak wyników.');
+                                  }
+                                  return ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemCount: links.length,
+                                    itemBuilder: (context, index) {
+                                      final link = links[index];
+                                      return Card(
+                                        child: ListTile(
+                                          title: Text(link.title),
+                                          subtitle: Text(link.description),
+                                          trailing: const Icon(Icons.open_in_new),
+                                          onTap: () => launchUrl(Uri.parse(link.url)),
+                                        ),
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                            ],
                           ],
                         ),
                       ),
