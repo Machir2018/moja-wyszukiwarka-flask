@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          // 🔴 Tło jako obraz
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
@@ -51,12 +50,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-
-          // 🔶 Główna zawartość z przesunięciem o 30px w górę
           LayoutBuilder(
             builder: (context, constraints) {
               return Transform.translate(
-                offset: const Offset(0, -30),
+                offset: const Offset(0, -40),
                 child: Center(
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(24),
