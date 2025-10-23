@@ -6,17 +6,23 @@ import 'add_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: 'AIzaSyA86bNGOOcH8IZc2-uyKKen-9NfgyoK9OA',
-      authDomain: 'yupoo-linki.firebaseapp.com',
-      projectId: 'yupoo-linki',
-      storageBucket: 'yupoo-linki.firebasestorage.app',
-      messagingSenderId: '991305640017',
-      appId: '1:991305640017:web:5633580b4c497501e6f070',
-    ),
-  );
+  await _initializeFirebase();
   runApp(const MyApp());
+}
+
+Future<void> _initializeFirebase() async {
+  try {
+    await Firebase.initializeApp(
+      options: FirebaseOptions(
+        apiKey: 'AIzaSyA86bNGOOcH8IZc2-uyKKen-9NfgyoK9OA',
+        authDomain: 'yupoo-linki.firebaseapp.com',
+        projectId: 'yupoo-linki',
+        storageBucket: 'yupoo-linki.firebasestorage.app',
+        messagingSenderId: '991305640017',
+        appId: '1:991305640017:web:5633580b4c497501e6f070',
+      ),
+    );
+  } catch (_) {}
 }
 
 class MyApp extends StatelessWidget {
