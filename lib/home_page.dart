@@ -68,22 +68,27 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildBoldHeader('Wyszukiwarka'),
-                              const SizedBox(height: 24),
-                              TextFormField(
+                              const SizedBox(height: 24.4),
+                              TextField(
                                 controller: searchController,
+                                style: TextStyle(
+                                  fontSize: 15.8,
+                                  fontWeight: FontWeight.w600,
+                                  color: Theme.of(context).textTheme.bodyMedium?.color,
+                                ),
                                 decoration: const InputDecoration(
                                   prefixIcon: Icon(Icons.search),
                                   labelText: 'Szukaj',
                                   hintText: 'Wyszukaj markę lub sprzedawcę',
                                 ),
-                                onFieldSubmitted: (_) => _submitSearch(),
+                                onSubmitted: (_) => _submitSearch(),
                               ),
                               const SizedBox(height: 32),
                               Center(
                                 child: ElevatedButton.icon(
                                   onPressed: _submitSearch,
                                   icon: const Icon(Icons.search),
-                                  label: const Text('Szukaj', style: TextStyle(fontWeight: FontWeight.bold)),
+                                  label: Text('Szukaj', style: TextStyle(fontSize: 15.8, fontWeight: FontWeight.w700)),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.green.shade600,
                                     foregroundColor: Colors.white,
@@ -94,16 +99,29 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const SizedBox(height: 32),
                               if (searchQuery.isNotEmpty) ...[
-                                Text('Wyniki dla: "$searchQuery"',
-                                    style: const TextStyle(fontSize: 18)),
-                                const SizedBox(height: 16),
+                                Text(
+                                  'Wyniki dla: "$searchQuery"',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).textTheme.bodyMedium?.color,
+                                  ),
+                                ),
+                                const SizedBox(height: 12),
                                 StreamBuilder<List<LinkItem>>(
                                   stream: getLinksStream(),
                                   builder: (context, snapshot) {
-                                    if (!snapshot.hasData) return const CircularProgressIndicator();
+                                    if (!snapshot.hasData) {
+                                      return CircularProgressIndicator(
+                                        color: Theme.of(context).colorScheme.primary,
+                                      );
+                                    }
                                     final links = snapshot.data!;
                                     if (links.isEmpty) {
-                                      return const Text('Brak wyników.');
+                                      return Text(
+                                        'Brak wyników.',
+                                        style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
+                                      );
                                     }
                                     return ListView.builder(
                                       shrinkWrap: true,
@@ -113,7 +131,10 @@ class _HomePageState extends State<HomePage> {
                                         final link = links[index];
                                         return Card(
                                           child: ListTile(
-                                            title: Text(link.title),
+                                            title: Text(
+                                              link.title,
+                                              style: const TextStyle(fontWeight: FontWeight.w500),
+                                            ),
                                             subtitle: Text(link.description),
                                             trailing: const Icon(Icons.open_in_new),
                                             onTap: () => launchUrl(Uri.parse(link.url)),
@@ -143,7 +164,11 @@ class _HomePageState extends State<HomePage> {
     return Center(
       child: Text(
         text,
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.red.shade700),
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.red,
+        ),
         textAlign: TextAlign.center,
       ),
     );

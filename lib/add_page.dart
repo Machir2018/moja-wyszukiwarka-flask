@@ -28,9 +28,11 @@ class _AddPageState extends State<AddPage> {
     );
 
     try {
-      await FirebaseFirestore.instance
-          .collection('links')
-          .add(newLink.toMap());
+      final docId = '${newLink.title} ${newLink.description}';
+await FirebaseFirestore.instance
+    .collection('links')
+    .doc(docId)
+    .set(newLink.toMap());
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Link dodany pomyślnie!')),
