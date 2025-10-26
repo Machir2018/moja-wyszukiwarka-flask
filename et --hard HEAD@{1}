@@ -1,0 +1,26 @@
+[33m32eed68[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: reset: moving to origin/main
+[33m1476ddd[m HEAD@{1}: commit: Dodano ID dokumentu jako title + description
+[33mda57bc6[m HEAD@{2}: commit: Aktualizacja: konfiguracja Git LFS i bufor pusha
+[33m0af2705[m HEAD@{3}: commit: Zmiana nazwy na Wyszukiwarka Yupoo, nowy package com.yupoo.search, Firebase skonfigurowany
+[33m2a9c89e[m HEAD@{4}: commit: Aktualizacja tła i layoutu wyszukiwarki
+[33m400c8cb[m HEAD@{5}: commit: Aktualizacja widoku i tła
+[33m78b51b8[m HEAD@{6}: commit: Aktualizacja: tło, layout, usunięcie SplatterPainter, przesunięcie wyszukiwarki
+[33mbc8f360[m HEAD@{7}: commit: Konfiguracja Firebase Web: ręczne połączenie i odczyt danych z Firestore
+[33mcfd3901[m HEAD@{8}: commit: Usunięto błędny plik _redirects.txt
+[33mb613b99[m HEAD@{9}: commit: Dodano _redirects do build/web
+[33mcc7b3b8[m HEAD@{10}: commit: Dodano _redirects do build/web
+[33m48e2420[m HEAD@{11}: commit: Dodano _redirects dla routingu
+[33m13bfd5c[m HEAD@{12}: commit: Aktualizacja: nowy layout, routing, bez tła]
+[33mf3a0dbd[m HEAD@{13}: commit: Aktualizacja: tło + routing + wyszukiwarka
+[33m28f37f5[m HEAD@{14}: commit: Aktualizacja: dodano build/web z trasą /add
+[33mf250908[m HEAD@{15}: commit: Dodano build/web do repozytorium
+[33m9567545[m HEAD@{16}: commit: Usunięto folder Flask
+[33meb6f002[m HEAD@{17}: commit: Usunięto folder Flask
+[33m04a82c6[m HEAD@{18}: commit: Dodano build/web mimo .gitignore
+[33m2a536b2[m HEAD@{19}: commit: Aktualizacja Flutter Web
+[33m3836b4d[m HEAD@{20}: commit: Aktualizacja wyglądu pola wyszukiwania
+[33m0246cbe[m HEAD@{21}: pull origin main --rebase (finish): returning to refs/heads/main
+[33m0246cbe[m HEAD@{22}: pull origin main --rebase (pick): Aktualizacja wyglądu pola wyszukiwania
+[33m2d3d2e6[m HEAD@{23}: pull origin main --rebase (start): checkout 2d3d2e6f347df0f89635bf472d808e25efdccfc0
+[33mcffaa36[m HEAD@{24}: Branch: renamed refs/heads/master to refs/heads/main
+[33mcffaa36[m HEAD@{26}: commit (initial): Aktualizacja wyglądu pola wyszukiwania
